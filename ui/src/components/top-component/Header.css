@@ -1,0 +1,47 @@
+.searcher {
+    font-size: 20px;
+}
+
+.searcher > form > * {
+    font-size: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+.searcher > form > input {
+    margin-right: 5px;
+}
+
+.searcher > form > button {
+    background-color: rgb(75, 127, 250);
+    color: white;
+    cursor: pointer;
+    border: 1px solid blue;
+}
+
+.searcher > form > button:hover {
+    background-color: rgb(26, 71, 206);
+}
+
+.searcher > form {
+    margin-top: 10px;
+}
+
+.logoutButton {
+    border: 2px solid rgb(243, 239, 239);
+    color: rgb(255, 251, 251);
+    opacity: 0.5;
+    border-radius: 3px;
+    padding: 3px 10px;
+    background-color: rgb(40, 112, 40);
+    font-size: 19px;
+    font-weight: bold;
+    /* background-color: transparent; */
+    cursor: pointer;
+    outline: none;
+}
+
+.logoutButton:hover {
+    background-color: black;
+}

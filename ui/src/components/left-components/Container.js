@@ -1,12 +1,43 @@
 import React from 'react'
 import Person from './Person'
+import axios from  "axios";
+import { useEffect, useState } from 'react';
+import URL from "../../contexts/url";
 
-export default function Container() {
+import "./Container.css";
+
+export default function Container(props) {
+
+  const [myConnections, setMyConnections] = useState([]);
+
+  const refreshConnectictions = async()=>{
+    console.log("Getting connections...");
+    const username = props.username; 
+    try {
+       const response = await axios.get(URL + "connections/"+username);
+  
+       setMyConnections(response.data.map((user)=> 
+            <Person username ={user.name} key={user.name}/>
+       ));
+    }
+    catch(error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(()=> {
+    console.log(props.username);
+    
+    refreshConnectictions();
+  },[props.loadCount]);
+
+
   return (
     <div>
-        <Person/>
-        <Person/>
-        <Person/>
+       <p className='connections-h'>Connections</p>
+       {myConnections}
     </div>
   )
 }
+
+export {Container};

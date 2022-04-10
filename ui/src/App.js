@@ -1,26 +1,34 @@
 import './App.css';
-import Container from './components/left-components/Container';
-import ChatBox from './components/right-components/ChatBox';
 
-
-import {socket, SocketContext} from "./contexts/socket";
+import React, { useState } from 'react';
+import Login from './components/Login';
+import Home from './components/Home';
 
 function App() {
+  const [authorized, setAuthorized] = useState(false);
+  const [username, setUsername] = useState("");
+
+  const allowLogin = (username) => {
+    setUsername(username);
+    setAuthorized(true);
+  }
+
+  const logout = () => {
+    setUsername(null);
+    setAuthorized(false);
+  }
+
+  const LoginPage=() => <Login login = {allowLogin}/>
+  const HomePage=() =>{
+    return <Home username = {username} logout = {logout}/>
+  }
+  
   return (
     <div>
-      <SocketContext.Provider value={socket}>
-        <div className='header'>
-          header
-        </div>
-        <div className='left'>
-          <Container/>
-        </div>
-        <div className='right'>
-          <ChatBox/>
-        </div>
-      </SocketContext.Provider>
+      {authorized ? HomePage() : LoginPage()}
     </div>
-  );
+  )
 }
+
 
 export default App;

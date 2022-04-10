@@ -2,13 +2,13 @@ import React from 'react'
 import {useContext, useEffect, useRef} from "react";
 import { SocketContext } from '../../contexts/socket';
 
-export default function ChatBox() {
+export default function ChatBox(props) {
   
   const socket = useContext(SocketContext);
   const messageInput = useRef(null);
   
   useEffect(()=>{
-    console.log("Socket changed");
+    console.log("ChatBox socket value changed");
 
     socket.on("recv-message",(message)=>{
       console.log(message);

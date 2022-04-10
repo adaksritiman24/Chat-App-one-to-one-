@@ -1,7 +1,8 @@
 import React from 'react'
+import "./Person.css";
 
-export default function Person() {
+export default function Person(props) {
   return (
-    <div>Sritiman Adak</div>
+    <div className='person'>{props.username}</div>
   )
 }
