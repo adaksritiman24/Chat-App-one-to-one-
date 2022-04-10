@@ -3,6 +3,6 @@ import "./Person.css";
 
 export default function Person(props) {
   return (
-    <div className='person'>{props.username}</div>
+    <div className='person' onClick = {()=>props.setPeername(props.peername)}>{props.peername}</div>
   )
 }

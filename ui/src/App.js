@@ -1,16 +1,22 @@
 import './App.css';
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Login from './components/Login';
 import Home from './components/Home';
+import {socket} from "./contexts/socket";
 
 function App() {
   const [authorized, setAuthorized] = useState(false);
   const [username, setUsername] = useState("");
+  const [sock, setSock] = useState(socket);
 
   const allowLogin = (username) => {
     setUsername(username);
     setAuthorized(true);
+
+    sock.auth = {username};
+    sock.connect();
+
   }
 
   const logout = () => {

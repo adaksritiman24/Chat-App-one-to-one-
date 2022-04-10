@@ -16,8 +16,13 @@ export default function Container(props) {
     try {
        const response = await axios.get(URL + "connections/"+username);
   
-       setMyConnections(response.data.map((user)=> 
-            <Person username ={user.name} key={user.name}/>
+       setMyConnections(response.data.map((peer)=> 
+            <Person 
+              peername ={peer.name} 
+              key={peer.name}
+              setPeername = {props.setPeername}
+              
+              />
        ));
     }
     catch(error) {

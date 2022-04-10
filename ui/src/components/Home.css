@@ -25,9 +25,11 @@
 .left {
     height: 76vh;
     background-color: #727171;
+    overflow-y: scroll;
 }
 
 .right {
+    position: relative;
     height: 76vh;
     background-color: #d5d3ce;
 }

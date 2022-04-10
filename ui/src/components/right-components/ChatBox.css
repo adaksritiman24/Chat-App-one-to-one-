@@ -1,0 +1,51 @@
+.chatBoxArena {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    display: grid;
+    grid-template-rows: 1fr 7fr 1fr;
+
+}
+
+.top-bar {
+    font-size: 27px;
+    padding: 7px;
+    color: white;
+    background: rgba(43, 25, 203, 0.6);
+}
+
+.messages {
+   
+}
+
+
+.message-send-bar {
+    display: grid;
+    padding: 7px;
+    grid-template-columns: 7fr 1fr;
+    background: rgba(255,255,255,0.4);
+    border-top: 1px solid rgb(70, 70, 70);
+}
+.message-send-bar > *{
+    font-size: 20px;
+}
+.message-send-bar > input {
+    margin-right: 5px;
+    padding: 5px;
+    padding-left: 15px;
+    border-radius: 20px;
+}
+
+.message-send-bar > button {
+    color: whitesmoke;
+    background-color: rgb(6, 77, 6);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+
+.message-send-bar > button:hover {
+    background-color: rgb(5,50,2);
+}

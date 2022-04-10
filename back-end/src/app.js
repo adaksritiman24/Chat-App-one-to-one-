@@ -20,11 +20,18 @@ const io = socketio(server,{
     }
 });
 
+var currentUsers = {};
+
 io.on("connection", (socket)=> {
-    console.log("New connection: "+ socket.id);
-    socket.on("send-message",(message)=>{
+    const username = socket.handshake.auth.username;
+    socket.username = username;
+    currentUsers[username] = socket.id;
+
+    console.log(socket.username, socket.id);
+
+    socket.on("private-message",(message)=>{
         console.log(message);
-        socket.emit("recv-message", "Server has received your message: "+message +" from "+ socket.id);
+        io.to(currentUsers[message.to]).emit("private-message", message);
     })
 })
 
