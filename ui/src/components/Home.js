@@ -12,28 +12,19 @@ export default function Home(props) {
   
   const [containerLoadCount, setcontainerLoadCount] = useState(0);
   const [peername, setPeername] = useState(null);
+  const [message, setMessage] = useState(null);
 
 
   const refreshContainer = ()=> {
     setcontainerLoadCount(containerLoadCount + 1);
   }
 
-  const handleMessages =(message)=>{
-    console.log("Handling Message");
-    console.log("Peer is :",peername, "Message from: "+message.from);
-    console.log("messages-"+message.from);
-    let messages = document.getElementById("messages-"+message.form);
-    messages.innerHTML += `<div>${message.text}</div>`
-  }
-
 
   useEffect(() => {
 
-    setPeername(peername);
-
     socket.on("private-message",(message)=>{
-      console.log(message);
-      handleMessages(message);
+
+      setMessage(message);
     })
 
   }, []);
@@ -64,6 +55,7 @@ export default function Home(props) {
                     socket = {socket}
                     peername = {peername}
                     username = {props.username}
+                    message = {message}
                     /> : <></>
               }
             </div>

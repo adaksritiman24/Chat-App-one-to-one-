@@ -16,7 +16,7 @@
 }
 
 .messages {
-   
+    overflow-y: scroll;
 }
 
 
@@ -48,4 +48,31 @@
 
 .message-send-bar > button:hover {
     background-color: rgb(5,50,2);
+}
+
+.single-message{
+    font-size: 20px;
+    margin: 7px;
+    display: flex;
+}
+
+.single-message > div {
+    box-shadow: 1px 1px 6px 1px rgb(117, 116, 116);
+    padding: 5px 11px;
+    max-width: 65%;
+    border-radius: 13px;
+}
+.f-start {
+    justify-content: flex-start;
+}
+.f-end {
+    justify-content: flex-end;
+}
+.self-message {
+    float: right;
+    background-color: rgb(132, 246, 122);
+}
+
+.other-message {
+    background-color: #eee;
 }
