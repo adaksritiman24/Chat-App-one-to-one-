@@ -6,8 +6,13 @@
     margin: 4px 4px;
     padding: 13px 9px;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
 }
 .person:hover {
     background-color: rgb(44, 43, 43);
+}
 
+.person > i {
+    color:  rgb(240, 48, 48);
 }

@@ -13,7 +13,12 @@ export default function Home(props) {
   const [containerLoadCount, setcontainerLoadCount] = useState(0);
   const [peername, setPeername] = useState(null);
   const [message, setMessage] = useState(null);
+  const [notificationFor, setNotificationFor] = useState({});
 
+  const setPersonToChatBox = (newPeername) => {
+    setPeername(newPeername);
+    setNotificationFor({...notificationFor, [newPeername] : false});
+  }
 
   const refreshContainer = ()=> {
     setcontainerLoadCount(containerLoadCount + 1);
@@ -23,11 +28,11 @@ export default function Home(props) {
   useEffect(() => {
 
     socket.on("private-message",(message)=>{
-
+      setNotificationFor({...notificationFor, [message.from] : true});
       setMessage(message);
     })
 
-  }, []);
+  },[socket]);
 
   return (
 
@@ -47,9 +52,12 @@ export default function Home(props) {
                 socket={socket} 
                 username = {props.username} 
                 loadCount = {containerLoadCount}
-                setPeername = {setPeername}/>
+                setPersonToChatBox = {setPersonToChatBox}
+                notificationFor = {notificationFor}
+                setNotificationFor = {setNotificationFor}
+                />
             </div>
-            <div className='right'>
+            <div className='right' style={{background : 'url(./imgs/bg2.jpg) center',}}>
               {peername ? 
                   <ChatBox 
                     socket = {socket}
