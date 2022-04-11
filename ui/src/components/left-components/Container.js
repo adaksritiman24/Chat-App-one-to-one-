@@ -20,8 +20,8 @@ export default function Container(props) {
             <Person 
               peername ={peer.name} 
               key={peer.name}
-              setPeername = {props.setPeername}
-              
+              setPersonToChatBox = {props.setPersonToChatBox}
+              notification = {props.notificationFor[peer.name]}
               />
        ));
     }
@@ -31,10 +31,9 @@ export default function Container(props) {
   }
 
   useEffect(()=> {
-    console.log(props.username);
     
     refreshConnectictions();
-  },[props.loadCount]);
+  },[props.loadCount, props.notificationFor]);
 
 
   return (

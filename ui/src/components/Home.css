@@ -32,4 +32,7 @@
     position: relative;
     height: 76vh;
     background-color: #d5d3ce;
+    /* background-image: url("../../public/imgs/bg2.jpg"); */
+
+    /* background-image: url("/bg2"); */
 }

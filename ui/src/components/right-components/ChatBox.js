@@ -7,26 +7,23 @@ import "./ChatBox.css";
 export default function ChatBox(props) {
   
   const socket = useContext(SocketContext);
-  const messageInput = useRef(null);
+  // const messageInput = useRef(null);
   
   const handleMessages =(message)=>{
     if(message.from !== props.peername)
       return
-    let messages = document.getElementById("messages");
-    messages.innerHTML += 
-      `<div class="single-message f-start">
-          <div class= "other-message">${message.text}</div>
-      </div>`
-    messages.scrollTop= messages.scrollHeight;  
+    insertMessages(message.text,"other");
   }
 
-  const handleSelfMessages = (message)=> {
-    const messages = document.getElementById("messages");
-    messages.innerHTML += `<div class="single-message f-end">
-          <div class= "self-message">${message}</div>
+  const insertMessages = (message, type)=> {
+    let messages = document.getElementById("messages");
+    messages.innerHTML += 
+      `<div class="single-message ${type === 'self' ? 'f-end':'f-start'}">
+          <div class= "${type === 'self' ? 'self-message':'other-message'}">${message}</div>
       </div>`
-      messages.scrollTop= messages.scrollHeight;    
-  }
+    messages.scrollTop= messages.scrollHeight;  
+  } 
+
 
   const resetMessagestoNewPeer = ()=>{
     document.getElementById("messages").innerHTML="";
@@ -42,7 +39,8 @@ export default function ChatBox(props) {
       from : props.username,
     });
     event.target.message.value = "";
-    handleSelfMessages(message);
+    // handleSelfMessages(message);
+    insertMessages(message,"self");
   }
 
   useEffect(() => {
