@@ -32,7 +32,11 @@ export default function Home(props) {
       setMessage(message);
     })
 
+<<<<<<< HEAD
   },[socket]);
+=======
+  });
+>>>>>>> 6cefd64cbbc95c2f2c6283e3adfcc18d51aafc3d
 
   return (
 
