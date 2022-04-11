@@ -1,6 +1,8 @@
 const {Router} = require("express");
 const User = require("../models/user");
 const router = Router();
+const Chats = require("../models/chats");
+const { getChatRoomName } = require("../utils/utility");
 
 
 router.post("/user", async(req,res)=> {
@@ -82,6 +84,27 @@ router.get('/connections/:un', async(req,res)=> {
     }
 
 });
+
+router.get("/chats", async(req, res)=>{
+    try {
+        const personA = req.query.A;
+        const personB = req.query.B;
+        
+        const chatRoomName = getChatRoomName(personA, personB);
+
+        const chatRoom = await Chats.findOne({chatroom : chatRoomName});
+        if(!chatRoom) {
+            return res.send([]);
+        }
+        return res.send(chatRoom.messages);
+        
+    }
+    catch(e) {
+        res.status(500).send();
+    }
+});
+
+
 
 
 module.exports = router;

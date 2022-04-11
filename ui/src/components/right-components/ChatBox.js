@@ -1,6 +1,8 @@
 import React from 'react'
-import {useContext, useEffect, useRef} from "react";
+import {useContext, useEffect} from "react";
 import { SocketContext } from '../../contexts/socket';
+import axios from "axios";
+import URL from "../../contexts/url";
 
 import "./ChatBox.css";
 
@@ -25,8 +27,21 @@ export default function ChatBox(props) {
   } 
 
 
-  const resetMessagestoNewPeer = ()=>{
-    document.getElementById("messages").innerHTML="";
+  const resetMessagestoNewPeer = async()=>{
+    const messagesArea = document.getElementById("messages")
+    messagesArea.innerHTML="";
+
+    const response = await axios.get(URL+"chats?"+`A=${props.peername}&B=${props.username}`);
+    
+    response.data.forEach(message => {
+          if(message.from===props.username) { //this person's message
+            insertMessages(message.text, "self");
+          }      
+          else { //peer's message
+            insertMessages(message.text, "other")
+          }
+    });
+    
   }
 
   const sendMessage = (event)=> {
