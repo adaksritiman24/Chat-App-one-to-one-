@@ -1,0 +1,51 @@
+.login-base {
+
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(221, 221, 221);
+    font-family: arial;
+}
+.login-panel{
+
+    margin: auto;
+    width: 20em;
+    padding: 20px;
+    background-color: rgb(245, 245, 245);
+    box-shadow: 1px 1px 10px 1px #9d9c9c;
+}
+.login-panel h3{
+    margin: 8px 0px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.login-panel button {
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    margin: 12px 0px;
+    padding: 7px;
+    background-color:rgb(4, 193, 4);
+    border-radius: 3px;
+    border: none;
+    color: #fff;
+    transition: 0.4s;
+}
+
+.login-panel button:hover {
+    background-color:rgb(3, 138, 3);
+}
+
+.login-panel input {
+    width: 100%;
+    font-size: 20px;
+    padding: 7px;
+    margin: 0;
+    border-radius: 3px;
+    border: 1px solid #bbb;
+}
+
+.login-panel p {
+    color: #f00;
+}

@@ -7,6 +7,8 @@ const cors = require('cors');
 const Chats = require("./models/chats");
 
 const {getChatRoomName} = require("./utils/utility");
+const { disconnect } = require("process");
+const { json } = require("express");
 
 const PORT = process.env.PORT || 3001;
 
@@ -34,12 +36,16 @@ io.on("connection", (socket)=> {
 
     socket.on("private-message",(message)=>{
 
-
-        console.log(message);
         io.to(currentUsers[message.to]).emit("private-message", message);
 
         //save the message to databse
         saveToDatabse(message);
+    })
+
+    socket.on("disconnect", ()=>{
+        //clear User object
+        delete currentUsers[socket.username]
+        
     })
 })
 
@@ -47,7 +53,6 @@ io.on("connection", (socket)=> {
 
 const saveToDatabse = async(message)=> {
     const chatRoomName = getChatRoomName(message.from, message.to);
-    console.log(chatRoomName);
 
     var chatRoom = await Chats.findOne({chatroom : chatRoomName});
     if(!chatRoom) {

@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import URL from "../contexts/url";
 
+import "./Login.css";
+
 export default function Login(props) {
 
     const handleLogin = async (event) => {
@@ -44,18 +46,22 @@ export default function Login(props) {
     }
 
   return (
-    <div>
-        <form onSubmit={handleRegistration}>
-            <input type="text" name='username'/> 
-            <button type='submit'>Register</button>
-            <p id = "user-reg-status-success" ></p>
-        </form>
-
-        <form onSubmit={handleLogin}>
-            <input type="text" name='username'/> 
-            <button type='submit'>Login</button>
-            <p id = "user-reg-status-error" ></p>
-        </form>
+    <div className='login-base'>
+      <div className='login-panel'>
+        <h3>Register</h3>
+          <form onSubmit={handleRegistration}>
+              <input type="text" name='username' placeholder='Username'/> 
+              <button type='submit'>Register</button>
+              <p id = "user-reg-status-success" ></p>
+          </form>
+        <hr/>  
+        <h3>Login</h3>
+          <form onSubmit={handleLogin} className="login-form">
+              <input type="text" name='username' placeholder='Username'/> 
+              <button type='submit'>Login</button>
+              <p id = "user-reg-status-error" ></p>
+          </form>
+      </div>
     </div>
   )
 }

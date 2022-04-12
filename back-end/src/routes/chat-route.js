@@ -7,6 +7,8 @@ const { getChatRoomName } = require("../utils/utility");
 
 router.post("/user", async(req,res)=> {
     const username = req.body.username;
+    if(username=="")
+        return res.status(403).send();
 
     const user = User({
         name : username
@@ -23,7 +25,8 @@ router.post("/user", async(req,res)=> {
 
 router.post("/login",async(req,res)=> {
     const username = req.body.username;
-
+    if(username=="")
+        return res.status(403).send();
     const foundUser = await User.findOne({name : username});
 
     if(foundUser) {

@@ -22,6 +22,7 @@ function App() {
   const logout = () => {
     setUsername(null);
     setAuthorized(false);
+    sock.disconnect();
   }
 
   const LoginPage=() => <Login login = {allowLogin}/>
