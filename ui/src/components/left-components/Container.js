@@ -37,7 +37,7 @@ export default function Container(props) {
 
 
   return (
-    <div>
+    <div className='connection-container'>
        <p className='connections-h'>Connections</p>
        {myConnections}
     </div>

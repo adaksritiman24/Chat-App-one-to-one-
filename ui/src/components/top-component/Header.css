@@ -1,13 +1,19 @@
 .searcher {
     font-size: 20px;
 }
+.searcher form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
 
 .searcher > form > * {
     font-size: 20px;
     outline: none;
     border: none;
     border-radius: 5px;
-    padding: 5px;
+    padding: 4px;
+    margin: 4px;
 }
 .searcher > form > input {
     margin-right: 5px;
