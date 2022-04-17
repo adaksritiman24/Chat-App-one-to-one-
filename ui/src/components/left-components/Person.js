@@ -10,7 +10,7 @@ export default function Person(props) {
     <div className='person' 
     onClick = {handlePerson}
     >
-      <div>{props.peername}</div>
+      <div><i class="fa-solid fa-circle-user"></i> {props.peername}</div>
       {props.notification ? <i class="fa-solid fa-circle"></i> : <></>}
     </div>
   )

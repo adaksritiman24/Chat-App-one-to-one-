@@ -22,7 +22,7 @@ export default function Header(props) {
   return (
     <>
     <div>
-        <p>{props.username}</p>
+        <p><i class="fa-solid fa-user"></i> {props.username}</p>
         <hr/>
         <div>
             <button className='logoutButton' onClick={props.logout}>Logout</button>
@@ -32,7 +32,7 @@ export default function Header(props) {
         <form onSubmit={connectToAndRefresh}>
 
             <input type="text" placeholder="Enter username to connect" name='other'></input>
-            <button type='submit'>CONNECT</button>
+            <button type='submit'> <i class="fa-solid fa-globe"></i> CONNECT</button>
         </form>
     </div>
     </>

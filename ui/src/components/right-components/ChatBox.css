@@ -76,3 +76,10 @@
 .other-message {
     background-color: #eee;
 }
+
+.timestamp {
+    font-size: 11px;
+    font-style: italic;
+    opacity: 0.63;
+    text-align: right;
+}

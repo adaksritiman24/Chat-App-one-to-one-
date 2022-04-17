@@ -18,7 +18,7 @@ const chatsSchema = mongoose.Schema({
              required : true
          },
 
-         date : Date
+         date : Number
         }
     ]
 });

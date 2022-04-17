@@ -64,7 +64,8 @@ const saveToDatabse = async(message)=> {
     //add message to chatRoom
     chatRoom.messages = [...chatRoom.messages,  {
         from : message.from,
-        text : message.text
+        text : message.text,
+        date : message.date
     }];
     await chatRoom.save();
 
