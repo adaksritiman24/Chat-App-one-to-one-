@@ -30,9 +30,16 @@ export default function Home(props) {
     socket.on("private-message",(message)=>{
       setNotificationFor({...notificationFor, [message.from] : true});
       setMessage(message);
+      playNotificationAudio();
     })
 
   },[socket]);
+
+  const playNotificationAudio = async()=> {
+    const audio = new Audio("./audio/notification.wav");
+    audio.play();
+    console.log("Played..")
+  }
 
   return (
 
